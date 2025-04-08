@@ -68,7 +68,7 @@
 
   <div class="sgn text-center mt-5">
       <div class="form-footer">
-          <p>Don't have an account? <a href="">Sign up here!</a></p>
+          <p>Don't have an account? <a href="${pageContext.request.contextPath}/register">Sign up here!</a></p>
       </div>
   </div>
 </div>

@@ -1,29 +1,63 @@
-.main-content {
-    margin: 5px auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    padding: 20px;
-    text-align: center;
-    min-height: 60vh;
-    width: 80vw;
+.center {
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.form {
-    display: flex;
-    place-content: center;
-    width: 70vw;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border: 1px solid black;
+.center2 {
+  max-width: 720px;
+  margin: 0 auto;
+  background-color:rgb(100, 128, 200);
+  color: white;
+  padding: 10px;
+  border-radius: 0.15rem;
 }
 
-.validation-error {
-    color: red;
+
+/* Form styling */
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+
 }
 
-.m-bottom {
-    margin-bottom: 15px;
+.label {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #6c757d;
 }
+
+.form-control {
+  width: 100%;
+  padding: 15px 0;
+  font-size: 0.8rem;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background-color: transparent;
+  outline: none;
+  border-radius: 0px;
+}
+
+.form-control:focus {
+  border-bottom: 2px solid #007bff;
+  box-shadow: none;
+
+}
+
+/* Active state: label moves up */
+.form-control:focus + label,
+.form-control:not(:placeholder-shown) + label {
+  top: -20px;
+  font-size: 0.75rem;
+  color: #007bff;
+}
+
+#submit {
+  font-size: 15px; /* Make text larger */
+  padding: 10px 60px; /* Increase padding for larger button */
+}
+
+
+
