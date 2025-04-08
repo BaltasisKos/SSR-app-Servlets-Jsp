@@ -13,5 +13,7 @@
         <img class="footer-img" src="${pageContext.request.contextPath}/img/logo_el.png" alt="Logo" height="60">
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

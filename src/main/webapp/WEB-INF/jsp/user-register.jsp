@@ -19,11 +19,11 @@
 <body>
 	<%@ include file="header.jsp"%>
     <div class="mx-auto" style="height: 650px;">
-     <div class="text-center auth-text mt-5 center2">
+     <div class="text-center mt-5 center2">
       <h2>Δημιουργία Λογαριασμού</h2>
     </div>
       <div class="center mt-4">
-          <div class="auth-text text-center mb-3">
+          <div class="text-center mb-3">
               <h2></h2>
               <div style="color: red;">${error}</div>
           </div>
@@ -79,7 +79,6 @@
 </div>
 
     <%@include file="footer.jsp"%>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js"></script>
+
 </body>
 </html>
