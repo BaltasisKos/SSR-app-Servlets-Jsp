@@ -14,7 +14,7 @@
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
 
 <!-- Main Content -->
-<main class="container text-center my-5 main-content">
+<main class="container text-center my-5 main-content" style="height: 600px;">
     <h1 class="mb-5">Κεντρική Υπηρεσία Coding Factory</h1>
     <a href="${pageContext.request.contextPath}/login" class="custom-button-green">Συνέχεια</a>
 </main>
