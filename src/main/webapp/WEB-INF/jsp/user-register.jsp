@@ -1,84 +1,106 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     response.setHeader("Pragma", "no-cache");
     response.setHeader("Expires", "0");
 %>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
-     integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
+    <title>Εγγραφή Χρήστη</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-	<%@ include file="header.jsp"%>
-    <div class="mx-auto" style="height: 650px;">
-     <div class="text-center mt-5 center2">
-      <h2>Δημιουργία Λογαριασμού</h2>
-    </div>
-      <div class="center mt-4">
-          <div class="text-center mb-3">
-              <h2></h2>
-              <div style="color: red;">${error}</div>
-          </div>
-          <div class="auth-text text-center mb-3">
-               <c:if test="${requestScope.isError == 'true'}">
-                        <p style="color: red">Login Error</p>
+<body class="bg-gray-50">
+<%@ include file="header.jsp"%>
+
+<main class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="w-full max-w-md space-y-8">
+        <div class="text-center">
+            <h2 class="mt-6 text-3xl font-bold text-gray-900">Εγγραφή Χρήστη</h2>
+            <p class="mt-2 text-sm text-gray-600">Δημιουργήστε έναν νέο λογαριασμό</p>
+        </div>
+
+        <c:if test="${not empty requestScope.errorMessage}">
+            <div class="rounded-md bg-red-50 p-4 mb-4">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-red-800">${requestScope.errorMessage}</p>
+                    </div>
+                </div>
+            </div>
+        </c:if>
+
+        <form method="POST" action="" class="mt-8 space-y-6">
+            <div class="rounded-md shadow-sm space-y-4">
+                <div>
+                    <label for="username" class="sr-only">Username</label>
+                    <input id="username" name="username" type="email" autocomplete="email" required
+                           value="${requestScope.userRegisterDTO.username}"
+                           class="relative block w-full px-3 py-2 border ${not empty requestScope.usernameMessage ? 'border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500' : 'border-gray-300 placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500'} rounded-md shadow-sm"
+                           placeholder="Email">
+                    <c:if test="${not empty requestScope.usernameMessage}">
+                        <p class="mt-2 text-sm text-red-600">${requestScope.usernameMessage}</p>
                     </c:if>
-          </div>
-
-          <div class="mb-4 text-center">
-              <p class="font-sans mt">Παρακαλώ εισάγετε τα στοιχεία της φόρμας:
-
-          <div>
-            <form action="${pageContext.request.contextPath}/login" method="POST">
-                <div class="form-group">
-                    <label class="font-strong font-sans text-dark" for="user">Εισάγετε όνομα χρήστη:</label>
-                    <input type="text" id="user" class="form-control" placeholder="Username">
                 </div>
 
-                <div class="form-group">
-                    <label class="text-dark" for="password">Εισάγετε κωδικό πρόσβασης:</label>
-                    <input type="password" id="password" class="form-control" placeholder="Password">
+                <div>
+                    <label for="password" class="sr-only">Password</label>
+                    <input id="password" name="password" type="password" autocomplete="new-password" required
+                           value="${requestScope.userRegisterDTO.password}"
+                           class="relative block w-full px-3 py-2 border ${not empty requestScope.passwordMessage ? 'border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500' : 'border-gray-300 placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500'} rounded-md shadow-sm"
+                           placeholder="Password">
+                    <c:if test="${not empty requestScope.passwordMessage}">
+                        <p class="mt-2 text-sm text-red-600">${requestScope.passwordMessage}</p>
+                    </c:if>
                 </div>
 
-                <div class="form-group">
-                    <label class="text-dark" for="password">Επαλήθευση κωδικού πρόσβασης:</label>
-                    <input type="password" id="password" class="form-control" placeholder="Confirm Password">
+                <div>
+                    <label for="confirmPassword" class="sr-only">Confirm Password</label>
+                    <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" required
+                           value="${requestScope.userRegisterDTO.confirmPassword}"
+                           class="relative block w-full px-3 py-2 border ${not empty requestScope.confirmPasswordMessage ? 'border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500' : 'border-gray-300 placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500'} rounded-md shadow-sm"
+                           placeholder="Confirm Password">
+                    <c:if test="${not empty requestScope.confirmPasswordMessage}">
+                        <p class="mt-2 text-sm text-red-600">${requestScope.confirmPasswordMessage}</p>
+                    </c:if>
                 </div>
 
-                <div class="form-group">
-                    <select class="m-bottom" name="role">
+                <div>
+                    <label for="role" class="sr-only">Role</label>
+                    <select id="role" name="role"
+                            class="relative block w-full px-3 py-2 border ${not empty requestScope.roleMessage ? 'border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500' : 'border-gray-300 placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500'} rounded-md shadow-sm">
                         <option value="ADMIN">Διαχειριστής</option>
                         <option value="LIGHT_ADMIN">Βοηθός Διαχειριστή</option>
                     </select>
-                    <!-- <p class="validation-error">${requestScope.roleMessage}</p> -->
+                    <c:if test="${not empty requestScope.roleMessage}">
+                        <p class="mt-2 text-sm text-red-600">${requestScope.roleMessage}</p>
+                    </c:if>
                 </div>
+            </div>
 
+            <div>
+                <button type="submit"
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                    Εγγραφή
+                </button>
+            </div>
+        </form>
 
-                <div class="d-flex justify-content-between align-items-center">
-                  <!-- Δημιουργία Λογαριασμού Button (Larger Button) -->
-                  <input class="btn btn-primary btn-lg" type="submit" id="submit" value="Δημιουργία Λογαριασμού" style="margin-right: 40px;">
-
-                  <!-- Ακύρωση Button (Smaller Button) -->
-                  <input class="btn btn-secondary btn-sm" type="submit" id="submit" value="Ακύρωση">
-                </div>
-
-
-            </form>
+        <div class="text-center">
+            <a href="${pageContext.request.contextPath}/login" class="font-medium text-blue-600 hover:text-blue-500 transition-colors duration-200">
+                Επιστροφή στη σελίδα εισόδου
+            </a>
         </div>
-      </div>
-  </main>
+    </div>
+</main>
 
-</div>
-
-    <%@include file="footer.jsp"%>
-
+<%@ include file="footer.jsp"%>
 </body>
 </html>

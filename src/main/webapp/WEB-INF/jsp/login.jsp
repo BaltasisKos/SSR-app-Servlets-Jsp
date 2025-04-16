@@ -12,68 +12,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
-     integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-	<%@ include file="header.jsp"%>
-    <div class="mx-auto" style="height: 650px;">
-     <div class="text-center auth-text mt-5 center2">
-      <h2>Αυθεντικοποίηση χρήστη
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <%@ include file="header.jsp"%>
 
-      </h2>
-    </div>
-      <div class="center mt-4">
-          <div class="auth-text text-center mb-3">
-              <h2>Σύνδεση</h2>
-              <div style="color: red;">${error}</div>
-          </div>
-          <div class="auth-text text-center mb-3">
-               <c:if test="${requestScope.isError == 'true'}">
-                        <p style="color: red">Login Error</p>
-                    </c:if>
-          </div>
+    <main class="flex-grow flex items-center justify-center px-4 py-12">
+        <div class="w-full max-w-md">
 
-          <div class="mb-4 text-center">
-              <p class="font-sans mt">Παρακαλώ εισάγετε όνομα χρήστη και κωδικό για να συνδεθείτε:</p>
-          </div>
-
-          <div>
-            <form action="${pageContext.request.contextPath}/login" method="POST">
-                <div class="form-group">
-                    <label class="font-strong font-sans text-dark" for="user">Χρήστης:</label>
-                    <input type="text" id="user" class="form-control" placeholder="Εισάγετε το username">
+            <div class="bg-white p-8 sm:p-10 rounded-xl shadow-md border border-gray-200">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">Καλωσήρθατε</h1>
+                    <p class="text-gray-600">Είσοδος στον λογαριασμό σας</p>
                 </div>
 
-                <div class="form-group">
-                    <label class="text-dark" for="password">Κωδικός πρόσβασης:</label>
-                    <input type="password" id="password" class="form-control" placeholder="Εισάγετε τον κωδικό πρόσβασης">
+                <!-- Error Messages -->
+                <c:if test="${not empty error}">
+                    <div class="mb-6 p-3 bg-red-50 border-l-4 border-red-500 text-red-700 rounded">
+                        <p>${requestScope.error}</p>
+                    </div>
+                </c:if>
+
+
+                <!-- Login Form -->
+                <form method="POST" action="${pageContext.request.contextPath}/login" class="space-y-6">
+                    <div>
+                        <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input id="username" name="username" type="email" required
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition duration-200"
+                               placeholder="Εισάγετε το username">
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input id="password" name="password" type="password" required
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition duration-200"
+                               placeholder="Εισάγετε το password">
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input id="remember-me" name="remember-me" type="checkbox"
+                                   class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
+                            <label for="remember-me" class="ml-2 block text-sm text-gray-700">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <div class="text-sm">
+                            <a href="#" class="font-medium text-primary-600 hover:text-primary-500">
+                                Ξεχάσατε το password?
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit"
+                                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-200">
+                            Είσοδος
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-6 text-center text-sm">
+                    <p class="text-gray-500">
+                        Δεν έχετε λογαριασμό?
+                        <a href="${pageContext.request.contextPath}/register" class="font-medium text-primary-600 hover:text-primary-500">
+                            Δημιουργήστε ένα εδώ
+                        </a>
+                    </p>
                 </div>
-
-
-                <div class="d-flex justify-content-between align-items-center">
-                    <input class="btn btn-primary" type="submit" id="submit" value="ΣΥΝΔΕΣΗ">
-
-
-                </div>
-
-                <div class="row mt-4">
-                    <p>Forgot your password?</p>
-                </div>
-            </form>
+            </div>
         </div>
-      </div>
-  </main>
-
-  <div class="sgn text-center mt-5">
-      <div class="form-footer">
-          <p>Don't have an account? <a href="${pageContext.request.contextPath}/register">Sign up here!</a></p>
-      </div>
-  </div>
-</div>
+    </main>
 
     <%@include file="footer.jsp"%>
-
 </body>
 </html>
