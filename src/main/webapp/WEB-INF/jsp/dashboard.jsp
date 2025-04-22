@@ -120,15 +120,15 @@
                             </div>
                           </div>
                      </div>
-                     <div class="overflow-hidden rounded-2xl border border-gray-600 bg-gray-300 px-5 pt-5 sm:px-6 sm:pt-6 dark:border-gray-800 dark:bg-white/[0.03]">
+                     <div class="overflow-hidden rounded-2xl border border-gray-600 bg-gray-300 px-5 pt-5 sm:px-6 sm:pt-6 dark:border-gray-800">
 
-                <div class="col-span-12 xl:col-span-5">
-                    <!-- ====== Chart Two Start -->
+      <div class="col-span-12 xl:col-span-5">
+      <!-- ====== Chart Two Start -->
 
     <!-- ====== Chart Two End -->
-            <div class="col-span-12">
-                <!-- ====== Chart Three Start -->
-                <div class="rounded-2xl border border-gray-200 bg-white px-5 pb-5 pt-5 dark:border-gray-800 sm:px-6 sm:pt-6">
+    <div class="col-span-12">
+    <!-- ====== Chart Three Start -->
+    <div class="rounded-2xl border border-gray-200 bg-white px-5 pb-5 pt-5 dark:border-gray-800 sm:px-6 sm:pt-6">
   <div class="flex flex-col gap-5 mb-6 sm:flex-row sm:justify-between">
     <div class="w-full">
       <p class="text-lg font-semibold text-gray-800 ">
