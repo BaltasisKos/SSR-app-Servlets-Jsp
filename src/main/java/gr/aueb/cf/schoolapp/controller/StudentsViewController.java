@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/school-app/teachers/view")
+@WebServlet("/school-app/students/view")
 public class StudentsViewController extends HttpServlet {
 
     IStudentDAO studentDAO = new StudentDAOImpl();

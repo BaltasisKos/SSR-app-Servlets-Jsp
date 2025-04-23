@@ -71,8 +71,8 @@
           <!-- Teacher Dropdown Menu -->
         <div id="navbar-hamburger1" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm mb-2">
           <ul class="py-2 text-sm text-gray-700 dark:text-gray-800">
-            <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:text-white text-center mb-2"  style="border-bottom: solid 0.5px;">Προβολή</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:text-white text-center ">Εισαγωγή</a></li>
+            <li><a href="${pageContext.request.contextPath}/school-app/students/view" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:text-white text-center mb-2"  style="border-bottom: solid 0.5px;">Προβολή</a></li>
+              <li><a href="${pageContext.request.contextPath}/school-app/students/insert" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:text-white text-center ">Εισαγωγή</a></li>
           </ul>
         </div>
 

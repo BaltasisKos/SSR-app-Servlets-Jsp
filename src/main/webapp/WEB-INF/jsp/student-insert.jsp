@@ -31,7 +31,7 @@
 
         <!-- Student Form Form -->
         <div class="bg-white shadow-md rounded-lg p-6 mb-8">
-            <form method="POST" action="${pageContext.request.contextPath}/school-app/teachers/insert" class="space-y-6">
+            <form method="POST" action="${pageContext.request.contextPath}/school-app/students/insert" class="space-y-6">
                 <!-- Name Row -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -172,9 +172,9 @@
 
         <!-- Back Link -->
         <div class="text-center">
-            <a href="${pageContext.request.contextPath}/school-app/teachers/view"
+            <a href="${pageContext.request.contextPath}/school-app/students/view"
                class="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">
-                Επιστροφή στη λίστα καθηγητών
+                Επιστροφή στη λίστα μαθητών
             </a>
         </div>
     </div>
