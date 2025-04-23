@@ -6,13 +6,13 @@ import gr.aueb.cf.schoolapp.dto.BaseStudentDTO;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StudentValidator<T> {
+public class StudentValidator<S> {
 
     private StudentValidator() {
 
     }
 
-    public static <T extends BaseStudentDTO> Map<String, String> validate(T dto) {
+    public static <S extends BaseStudentDTO> Map<String, String> validate(S dto) {
         Map<String, String> errors = new HashMap<>();
 
         if (dto.getFirstname().length() < 2 || dto.getFirstname().length() > 32) {

@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-public class StudentInsertDTO extends BaseTeacherDTO {
+public class StudentInsertDTO extends BaseStudentDTO {
 
     public StudentInsertDTO() {}
 
